@@ -55,3 +55,4 @@ function updateCanvas(){
         player.draw()
 }
 
+//that's where I got
