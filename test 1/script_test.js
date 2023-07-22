@@ -1,9 +1,6 @@
 var canvasWidth = 600;
 var canvasHeight = 400;
 
-function startGame() {
-        gameCanvas.start();
-}
 
 var gameCanvas = {
         canvas: document.createElement('canvas'),
@@ -20,7 +17,7 @@ var playerYPosition = 200
 
 function startGame(){
         gameCanvas.start();
-
+        block = new createBlock()
         player = new createPlayer(30,30,10)
 }
 
@@ -39,8 +36,14 @@ function createPlayer(width,height,x){
         this.makeFall = function(){
                 this.y += fallSpeed;
                 fallSpeed += 0.1;
-                this. stopPlayer();
+                this.stopPlayer();
         }
+
+        this.stopPlayer = function(){
+                var ground = canvasHeight - this.height;
+                if(this.y > ground){
+                        this.y = ground;
+                }
 
 }
 
@@ -54,4 +57,12 @@ function updateCanvas(){
         player.makeFall()
         player.draw()
 }
+
+}
+
+var isJumping = false;
+var jumpSpeed = 0;
+
+var block;
+
 
